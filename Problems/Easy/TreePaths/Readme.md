@@ -1,30 +1,33 @@
-Graffiti ON THE FENCE
-=====================
+Tree Paths
+==========
 
 	Goal
-You are paid by a farmer to paint his fence.
+	
+	You are given a binary tree, where each node in the tree has two or zero children. If a node X has two children, they are called L Left & R Right children respectively. **X is a Parent of L and R**
 
-Knowing that the task can be too difficult for yourself, you sub-contracted the job to a school of students as their extracurricular activity, to draw graffiti on the fence.
+	All trees have one root node, which is the only node without parent. All the other nodes have exactly one parent.
 
-After a whole day of work and fun, the students reported which sections of the fence have been painted. The students were working in small teams or individually, so that you got multiple separated reports from them.
+	All tree nodes have assigned a unique number called index.
+	Given a tree and an index V, print the path from the root to the tree node with index V
 
-The fence has markings on it at every meter, count **from meter 0**. A painted section is reported as
-**st ed**
-which means painting is done from **[starting point]** to **[ending point]**.
-We take only integer readings.
+	A tree path starts at the root node, and it goes down by choosing the left or the right children until it arrives to the target value. Print the Left & Right elements from the path in a single line.
 
-**Example**
-
- 		   st      ed
- 		   !░░░░░░░░!
-	        +--+--+--+--+--+--
- 	        0  1  2  3  4  5
-
-**st = 1
-ed = 4
-painted length = 3**
+	For instance, if we have the following tree.
 
 
-The painted sections may not be continuous, done on different parts of the fence. Some reported sections are even overlapping. The reports are not sorted in any special order.
+					     1
+					    / \
+					   /   \
+					  2     \
+					 / \     3
+					4   5   / \
+					       9   \
+						    8
+						   / \
+						  6   7
 
-Having the reports in hands, you want to know which sections of the fence have not been painted.
+
+	For this sample tree, Node 1 is the root, the only one without parents.
+	if V = 5, the Tree Path is Left Right
+	if V = 7, the Tree Path is Right Right Right
+	if V = 6, the Tree Path is Right Right Left

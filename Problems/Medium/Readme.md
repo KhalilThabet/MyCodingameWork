@@ -10,10 +10,10 @@ After a whole day of work and fun, the students reported which sections of the f
 
 The fence has markings on it at every meter, count **from meter 0**. A painted section is reported as
 **st ed**
-which means painting is done from [starting point] to [ending point].
+which means painting is done from **[starting point]** to **[ending point]**.
 We take only integer readings.
 
-Example
+**Example**
 
  		   st      ed
  		   !░░░░░░░░!

@@ -13,7 +13,7 @@ The fence has markings on it at every meter, count **from meter 0**. A painted s
 which means painting is done from [starting point] to [ending point].
 We take only integer readings.
 
-**Example
+Example
 
  		   st      ed
  		   !░░░░░░░░!

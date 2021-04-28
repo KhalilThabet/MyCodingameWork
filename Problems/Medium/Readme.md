@@ -1,7 +1,8 @@
 Graffiti ON THE FENCE
 =====================
 
-	##Goal
+	Goal
+	====
 You are paid by a farmer to paint his fence.
 
 Knowing that the task can be too difficult for yourself, you sub-contracted the job to a school of students as their extracurricular activity, to draw graffiti on the fence.

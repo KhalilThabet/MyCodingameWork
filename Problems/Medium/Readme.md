@@ -2,7 +2,6 @@ Graffiti ON THE FENCE
 =====================
 
 	Goal
-	====
 You are paid by a farmer to paint his fence.
 
 Knowing that the task can be too difficult for yourself, you sub-contracted the job to a school of students as their extracurricular activity, to draw graffiti on the fence.
@@ -16,10 +15,10 @@ We take only integer readings.
 
 **Example
 
-    st      ed
-    !░░░░░░░░!
- **+--+--+--+--+--+--**
- **0  1  2  3  4  5**
+ 		   st      ed
+ 		   !░░░░░░░░!
+	      **+--+--+--+--+--+--**
+ 	      **0  1  2  3  4  5**
 
 **st = 1
 ed = 4

@@ -1,11 +1,4 @@
-#include<iostream>
-#include <vector>
-
-using namespace std;
-class Master{
-    int obj;
-    public :vector<int> v={1,3,4};
-};#include <iostream>
+#include <iostream>
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -238,13 +231,13 @@ class BestOption{
         vector<int> Listing={searchTwoThreeGrow(),searchOneTwoGrow(),searchSeedGrow()};
         cerr<<"LISTING "<<Listing[0]<<" "<<Listing[1]<<" "<<Listing[2]<<endl;
         cerr<<day<<endl;
-        int x=10;
-        if (day<=x){
-            if (Ts.getNbTreeThree()>3){
+        int x=8;
+        if (day<=x-3){
+            if (Ts.getNbTreeThree()>1){
                 tuple<string,int,int> a=CompleteSearch();
                 if (get<0>(a)=="" && get<1>(a)==-1 ){
                     cerr<<"Entering Throw Seed"<<endl;
-                    bestGrow=searchSeedThrow();
+                    bestGrow=make_tuple("",-1,-1);
                 }
                 else bestGrow=a;}
             else{
@@ -254,13 +247,69 @@ class BestOption{
                             bestGrow=make_tuple("GROW",Listing[i],-1);
                             break;}
                     }
-                    if (i==Listing.size() && day%4<3) return make_tuple("",-1,-1);
+                    if (i==Listing.size() && day%3==2) bestGrow=make_tuple("",-1,-1);
                 
-                    else if (get<0>(bestGrow)=="" && get<1>(bestGrow)==-1 && day%4==3){
+                    else if (get<0>(bestGrow)=="" && get<1>(bestGrow)==-1 && day%3<2){
                         bestGrow=searchSeedThrow();
                     }
                 }}
-        else if(day==x+1){
+        else if (day<=x){
+            if (Ts.getNbTreeThree()>1){
+                tuple<string,int,int> a=CompleteSearch();
+                if (get<0>(a)=="" && get<1>(a)==-1 ){
+                    cerr<<"Entering Throw Seed"<<endl;
+                    bestGrow=make_tuple("",-1,-1);
+                }
+                else bestGrow=a;}
+            else{
+                    int i;
+                    for(i=0;i<Listing.size();i++) {
+                        if (Listing[i]!=-1) {
+                            bestGrow=make_tuple("GROW",Listing[i],-1);
+                            break;}
+                    }
+                    if (i==Listing.size()) bestGrow=make_tuple("",-1,-1);
+                    else if (get<0>(bestGrow)=="" && get<1>(bestGrow)==-1 && day%3<2){
+                        bestGrow=searchSeedThrow();
+                    }
+                
+                }}
+        else if(day>=x+1&&day<=x+3){
+            cerr<<day<<"::::\n";
+            int i;
+                for(i=0;i<Listing.size();i++) {
+                    if (Listing[i]!=-1) {
+                        bestGrow=make_tuple("GROW",Listing[i],-1);
+                        break;}
+                }
+                if (i==Listing.size()) bestGrow=make_tuple("",-1,-1);
+
+        }
+        else if(day>x+3 && day<x+7){
+            if (Ts.getNbTreeThree()>6){
+            tuple<string,int,int> a=CompleteSearch();
+            if (get<0>(a)=="" && get<1>(a)==-1 ){
+                cerr<<"Entering Throw Seed"<<endl;
+                bestGrow=make_tuple("",-1,-1);
+            }
+            else bestGrow=a;}
+            
+        else{
+                int i;
+                for(i=0;i<Listing.size();i++) {
+                    if (Listing[i]!=-1) {
+                        bestGrow=make_tuple("GROW",Listing[i],-1);
+                        break;}
+                }
+                if (i==Listing.size() && day%4<3) bestGrow=make_tuple("",-1,-1);
+            
+                else if (get<0>(bestGrow)=="" && get<1>(bestGrow)==-1 && day%4==3){
+                    bestGrow=searchSeedThrow();
+                }
+            }
+
+        }
+        else if(day>=x+7 && day<x+7){
             if (Ts.getNbTreeThree()>3){
             tuple<string,int,int> a=CompleteSearch();
             if (get<0>(a)=="" && get<1>(a)==-1 ){
@@ -268,39 +317,16 @@ class BestOption{
                 bestGrow=searchSeedThrow();
             }
             else bestGrow=a;}
-        else{
-                int i;
-                for(i=0;i<Listing.size();i++) {
-                    if (Listing[i]!=-1) {
-                        bestGrow=make_tuple("GROW",Listing[i],-1);
-                        break;}
-                }
-                bestGrow=searchSeedThrow();
-                
-            }
 
         }
-        else if(day>=x+2 && day<x+4){
-            if (Ts.getNbTreeThree()>5){
-            tuple<string,int,int> a=CompleteSearch();
-            if (get<0>(a)=="" && get<1>(a)==-1 ){
-                cerr<<"Entering Throw Seed"<<endl;
-                bestGrow=searchSeedThrow();
-            }
-            else bestGrow=a;}
-        else{
-                int i;
+        else if (day<x+13){
+            int i;
                 for(i=0;i<Listing.size();i++) {
                     if (Listing[i]!=-1) {
                         bestGrow=make_tuple("GROW",Listing[i],-1);
                         break;}
                 }
-                if (i==Listing.size() && day%6<5) return make_tuple("",-1,-1);
-            
-                else if (get<0>(bestGrow)=="" && get<1>(bestGrow)==-1 && day%6==5){
-                    bestGrow=searchSeedThrow();
-                }
-            }
+                if (i==Listing.size() ) bestGrow=make_tuple("",-1,-1);
 
         }
         else{
@@ -308,7 +334,7 @@ class BestOption{
             tuple<string,int,int> a=CompleteSearch();
             if (get<0>(a)=="" && get<1>(a)==-1 ){
                 cerr<<"Entering Throw Seed"<<endl;
-                bestGrow=searchSeedThrow();
+                bestGrow=make_tuple("",-1,-1);
             }
             else bestGrow=a;}
         else{
@@ -318,7 +344,7 @@ class BestOption{
                         bestGrow=make_tuple("GROW",Listing[i],-1);
                         break;}
                 }
-                if (i==Listing.size() ) return make_tuple("",-1,-1);
+                if (i==Listing.size() ) bestGrow=make_tuple("",-1,-1);
             
                 // else if (get<0>(bestGrow)=="" && get<1>(bestGrow)==-1 && day%6==5){
                 //     bestGrow=searchSeedThrow();
@@ -360,7 +386,7 @@ class BestOption{
             
 
         }
-        if (notFound1==Moves.size()) return -1;
+        return -1;
     }
 
     int searchOneTwoGrow(){
@@ -381,7 +407,7 @@ class BestOption{
             
 
         }
-        if (notFound1==Moves.size()) return -1;
+        return -1;
     }
 
     int searchSeedGrow(){
@@ -402,7 +428,7 @@ class BestOption{
             
 
         }
-        if (notFound1==Moves.size()) return -1;
+        return -1;
     }
 
     tuple<string,int,int> searchSeedThrow(){
@@ -511,9 +537,6 @@ int main()
             }
         }
         PossibleMoves Pm(PMoves);
-        for (int i=0;i<PMoves.size();i++){
-            cerr<<get<0>(Pm.getMoves()[i])<<" "<<get<1>(Pm.getMoves()[i])<<" "<<get<2>(Pm.getMoves()[i])<<endl;
-        }
         tuple<string,int,int> B=Bop(Ts,Pm,cells,day);
         if (PMoves.size()!=0 && B!=make_tuple("",-1,-1)){
             
@@ -534,9 +557,4 @@ int main()
 
         // GROW cellIdx | SEED sourceIdx targetIdx | COMPLETE cellIdx | WAIT <message>
         }
-}
-int main(){
-    Master M;
-    cerr<<M.v[0]<<endl;
-    return 0;
 }
